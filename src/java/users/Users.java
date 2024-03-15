@@ -70,7 +70,7 @@ public class Users {
     public boolean updateUser(String u, String p, String n, String e) {
         int rowAffected = 0;
         try {
-         // String sql="INSERT INTO tbluser (username,name,dob,password)"
+            // String sql="INSERT INTO tbluser (username,name,dob,password)"
             //         + "VALUES ('"+u+"','"+n+"',"+ "null"+",'"+p+"')";
             String sql = "UPDATE tbluser SET name = '" + n + "',"
                     + " dob = '" + e + "', password = '" + p + "' WHERE username = '" + u + "'";
@@ -100,12 +100,18 @@ public class Users {
 
             dbcon query1 = new dbcon();
             String sql = "";
-            sql = "select name from tbluser where username='" + this.getName() + "'";
+            sql = "SELECT\n"
+                    + "*\n"
+                    + "FROM\n"
+                    + "\"public\".category\n"
+                    + "INNER JOIN \"public\".tbluser ON \"public\".tbluser.\"UserType\" = \"public\".category.\"UserType\"\n"
+                    + "WHERE\n"
+                    + "\"public\".tbluser.\"UserID\" = '"+ this.getName() +"'";
             rs = query1.sqlquery(sql);
             rs.next();
             //this.name=rs.getString("name");
 
-          //  String n = rs.getString(3);
+            //  String n = rs.getString(3);
         } catch (SQLException ex) {
             Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -115,7 +121,7 @@ public class Users {
             = "jdbc:derby://localhost:1527/sample;;create=true;user=app;password=app";
     static final String DB_DRV
             = "org.apache.derby.jdbc.ClientDriver";
-   //static final String DB_USER = "root";
+    //static final String DB_USER = "root";
     //static final String DB_PASSWD = "";   
     ResultSet resultset = null;
     Connection connection = null;
