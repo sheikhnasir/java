@@ -13,4 +13,28 @@
             30
         </session-timeout>
     </session-config>
+    <servlet>
+        <servlet-name>checklogin</servlet-name>
+        <servlet-class>users.checklogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>insertuser</servlet-name>
+        <servlet-class>users.insertuser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateuser</servlet-name>
+        <servlet-class>users.updateuser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>checklogin</servlet-name>
+        <url-pattern>/checklogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>insertuser</servlet-name>
+        <url-pattern>/insertuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateuser</servlet-name>
+        <url-pattern>/updateuser</url-pattern>
+    </servlet-mapping>
 </web-app>
