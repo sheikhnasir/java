@@ -44,9 +44,20 @@ public class Users {
           
             db.dbcon query1=new db.dbcon();
             
-            String sql="select count(*) as rowcount from tbluser "
-                    + "where username=('"+this.getUserid().trim()+"') "
-                  + "and password=('"+this.getPassword().trim()+"') ";
+            String sql=
+                    "SELECT\n" +
+                        "\"public\".tbluser.\"UserID\",\n" +
+                        "\"public\".tbluser.\"Password\",\n" +
+                        "\"public\".tbluser.\"UserType\",\n" +
+                        "\"public\".category.\"Description\",\n" +
+                        "\"public\".category.\"Interface\"\n" +
+                        "FROM\n" +
+                        "\"public\".category\n" +
+                        "INNER JOIN \"public\".tbluser ON \"public\".tbluser.\"UserType\" = \"public\".category.\"UserType\"\n" +
+                        "WHERE\n" +
+                        "\"public\".tbluser.\"UserID\" = '"+this.getUserid().trim()+"' and\n" +
+                        "\"public\".tbluser.\"Password\"='"+this.getPassword().trim()+"'";
+
             rs=query1.sqlquery(sql);
             rs.next();
             x=rs.getInt("rowcount");
