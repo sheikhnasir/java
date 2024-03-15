@@ -42,7 +42,7 @@ public class checklogin extends HttpServlet {
             
             if (x==1){
                //SessionUser su=new SessionUser();
-                
+                user.setUserid(u);
                 user.updatename();
                 
               //  dbcon.SessionUser su;
@@ -51,7 +51,7 @@ public class checklogin extends HttpServlet {
                 HttpSession session = null;
                 //session.setAttribute("userlogin", user.getName());
                
-                response.sendRedirect("/eCom/pages/tables/dashboard.jsp");
+                response.sendRedirect(user.getUserinterface());
             }
             else{
                  out.println("Error login");

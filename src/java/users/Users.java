@@ -106,10 +106,11 @@ public class Users {
                     + "\"public\".category\n"
                     + "INNER JOIN \"public\".tbluser ON \"public\".tbluser.\"UserType\" = \"public\".category.\"UserType\"\n"
                     + "WHERE\n"
-                    + "\"public\".tbluser.\"UserID\" = '"+ this.getName() +"'";
+                    + "\"public\".tbluser.\"UserID\" = '"+ this.getUserid() +"'";
             rs = query1.sqlquery(sql);
             rs.next();
-            //this.name=rs.getString("name");
+           this.name=rs.getString("Name");
+           this.setUserinterface(rs.getString("interface"));
 
             //  String n = rs.getString(3);
         } catch (SQLException ex) {
@@ -218,6 +219,20 @@ public class Users {
      */
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    /**
+     * @return the userinterface
+     */
+    public String getUserinterface() {
+        return userinterface;
+    }
+
+    /**
+     * @param userinterface the userinterface to set
+     */
+    public void setUserinterface(String userinterface) {
+        this.userinterface = userinterface;
     }
 
 }
