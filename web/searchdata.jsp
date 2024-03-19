@@ -13,5 +13,26 @@
     </head>
     <body>
         <h1>Data is being search</h1>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>UserID</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+               
+            </tbody>
+        </table>
+
     </body>
 </html>
