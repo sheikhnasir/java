@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Find Staff</h1>
-        <input type="text" name="Searchtxt" value="" 
+        <input type="text" id="Searchtxt" name="Searchtxt" value="" 
               onkeydown ="loadSearch()" />
         <form action="search.jsp">
             <div id="searchdemo">
@@ -24,12 +24,13 @@
 </html>
 <script>
     function loadSearch(){
+        const searchValue=document.getElementById("Searchtxt").value;
         const xhttp=new XMLHttpRequest();
         xhttp.onload=function(){
             document.getElementById("searchdemo").innerHTML=
                     this.responseText;
         }
-        xhttp.open("GET","searchdata.jsp");
+        xhttp.open("GET","searchdata.jsp?searchtxt="+searchValue,true);
         xhttp.send();
     }
 </script>
