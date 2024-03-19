@@ -4,6 +4,9 @@
     Author     : virtualspace
 --%>
 
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="db.dbcon"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,8 +15,16 @@
         <title>Data loading....</title>
     </head>
     <body>
-        <h1>Data is being search</h1>
-        
+        <h1>Data is being search... 
+           <%
+            String searchtxt=request.getParameter("searchtxt");
+            out.println(searchtxt);
+            dbcon connection=new dbcon();
+            String sql="SELECT * FROM public.tbluser "
+                    + "WHERE public.tbluser.UserID LIKE '%"+searchtxt+"%' "
+                    + "LIMIT 1000 OFFSET 0";
+            ResultSet rs=connection.sqlquery(sql);
+          %></h1>
         <table border="1">
             <thead>
                 <tr>
@@ -24,12 +35,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
+                <% 
+            int i=1;
+               while(rs.next()){
+                try{
+                    %>
+                 <tr>
+                     <td><% out.println(i); %></td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
+                    <%
+                }
+                catch(Exception ex){
+                    
+                }
+                i++;
+               }
+                %>
+            
                
             </tbody>
         </table>
