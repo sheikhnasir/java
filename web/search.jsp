@@ -9,9 +9,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Search</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Find Staff</h1>
+        <input type="text" name="Searchtxt" value="" 
+              onkeydown ="loadSearch()" />
+        <form action="search.jsp">
+            <div id="searchdemo">
+                No Data
+             <div>
+        </form>
     </body>
 </html>
+<script>
+    function loadSearch(){
+        const xhttp=new XMLHttpRequest();
+        xhttp.onload=function(){
+            document.getElementById("searchdemo").innerHTML=
+                    this.responseText;
+        }
+        xhttp.open("GET","searchdata.jsp");
+        xhttp.send();
+    }
+</script>
